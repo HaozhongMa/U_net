@@ -1,5 +1,17 @@
-from abc import ABC
+# -*- coding: UTF-8 -*-
+# !/usr/bin/python
+"""
+@usage:
+@author:qiaos
+@file:UnetModel.py
+@time:2021/02/26
+@project:
+"""
 
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import glob
 import tensorflow as tf
 
 
@@ -69,17 +81,19 @@ class UNet(tf.keras.Model):
         self.down_sample_III = DownsampleLayer(256)
         self.down_sample_IV = DownsampleLayer(512)
         self.down_sample_V = DownsampleLayer(1024)
-
         self.up_sample = tf.keras.layers.Conv2DTranspose(512,
                                                          kernel_size=2,
                                                          strides=2,
                                                          padding='same')
-
         self.up_sample_I = UpsampleLayer(512)
         self.up_sample_II = UpsampleLayer(256)
         self.up_sample_III = UpsampleLayer(128)
-
         self.conv_last = UpsampleLayer(64)
         self.last = tf.keras.layers.Conv2D(2,
                                            kernel_size=1,
                                            padding='same')
+
+
+if __name__ == '__main__':
+    pass
+
