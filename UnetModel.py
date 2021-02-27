@@ -69,13 +69,13 @@ class UpsampleLayer(tf.keras.layers.Layer):
         return outputs
 
 
-class UNet(tf.keras.Model):
+class UNetModel(tf.keras.Model):
     """
     定义模型，这个模型的父类是来自keras的Model类
     """
 
     def __int__(self):
-        super(UNet, self).__init__()
+        super(UNetModel, self).__init__()
         self.down_sample_I = DownsampleLayer(64)
         self.down_sample_II = DownsampleLayer(128)
         self.down_sample_III = DownsampleLayer(256)
