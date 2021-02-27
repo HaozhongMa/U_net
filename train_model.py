@@ -12,6 +12,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import glob
+from data_pretreat import read_images_png
+from data_pretreat import read_masks_png
+from data_pretreat import crop_img
+from data_pretreat import load_train_image
+from data_pretreat import load_test_image
 #%%读取数据列表
 #训练数据列表
 #train数据集位置
@@ -36,6 +41,12 @@ dataset_train = tf.data.Dataset.from_tensor_slices((images_train_filelist,masks_
 #%%
 
 dataset_test = tf.data.Dataset.from_tensor_slices((images_test_filelist,masks_test_filelist))
+
+img_1 = read_images_png(images_train_filelist[0])
+
+#%%
+
+mask_1 = read_masks_png(masks_train_filelist[0])
 #%%
 if __name__ == '__main__':
     BATCH_SIZE = 5

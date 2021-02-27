@@ -14,9 +14,6 @@ import matplotlib.pyplot as plt
 
 #%%
 
-
-
-
 #%%
 
 def read_images_png(path):
@@ -32,11 +29,7 @@ def read_masks_png(path):
 
 #%%
 
-img_1 = read_images_png(images_train_filelist[0])
 
-#%%
-
-mask_1 = read_masks_png(masks_train_filelist[0])
 
 #%% md
 #数据增强
@@ -54,18 +47,6 @@ def crop_img(img,mask):
     return crop_img[ :, :, :3], crop_img[ :, :, 3:]
 
 #%%
-
-img_1,mask_1 = crop_img(img_1,mask_1)
-
-#%%
-
-plt.subplot(1,2,1)
-plt.imshow(img_1.numpy())
-plt.subplot(1,2,2)
-plt.imshow(mask_1.numpy())
-
-#%%
-
 def normal(img,mask):
     img = tf.cast(img, tf.float32)/127.5 - 1
     mask = tf.cast(mask/255, tf.int32)
@@ -98,4 +79,11 @@ def load_test_image(img_path,mask_path):
 
 
 if __name__ == '__main__':
-    pass
+    img_1, mask_1 = crop_img(img_1, mask_1)
+
+    # %%
+
+    plt.subplot(1, 2, 1)
+    plt.imshow(img_1.numpy())
+    plt.subplot(1, 2, 2)
+    plt.imshow(mask_1.numpy())
